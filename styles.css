@@ -2,8 +2,8 @@
   --purple: #542788;
   --brown: #b35806;
   --description-font-size: 16px;
-  --idiom-font-size: 26px;
-  --title-font: "Noto Serif", serif;
+  --idiom-font-size: 28px;
+  --title-font: "Tahoma", sans-serif;
 }
 
 body * {
@@ -50,8 +50,8 @@ body {
 
 .idiom-title {
   font-size: var(--idiom-font-size);
-  font-weight: 500;
-  margin-top: 3px;
+  font-weight: 600;
+  margin-top: 10px;
   color: black;
   font-family: var(--title-font);
 }
