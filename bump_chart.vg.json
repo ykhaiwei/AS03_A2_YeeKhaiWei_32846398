@@ -1,0 +1,187 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 1440,
+    "height": 400,
+    "data": {
+      "url": "https://raw.githubusercontent.com/ykhaiwei/AS03_A2_YeeKhaiWei_32846398/refs/heads/main/Countries.csv"
+    },
+    "params": [
+      {
+        "name": "Top_n_countries",
+        "value": 4,
+        "bind": {
+          "input": "range",
+          "min": 1,
+          "max": 10,
+          "step": 1,
+          "name": "Top Countries Displayed: "
+        }
+      }
+    ],
+  
+    "transform": [
+      { "filter": "parseInt(datum.Year) > 2011" },
+      { "calculate": "parseFloat(datum['GDP Per Capita'])", "as": "GDP_Numeric" },
+      {
+        "window": [
+          {
+            "op": "rank",
+            "as": "rank"
+          }
+        ],
+        "sort": [{ "field": "GDP_Numeric", "order": "descending" }],
+        "groupby": ["Year"]
+      },
+      { "filter": "datum.rank <= Top_n_countries" }
+    ],
+  
+    "encoding": {
+      "x": {
+        "field": "Year",
+        "type": "ordinal",
+        "axis": { "labelAngle": 0 },
+        "title": "Year"
+      },
+      "y": {
+        "field": "rank",
+        "type": "quantitative",
+        "sort": "descending",
+        "scale": { "domain": [0.5, { "expr": "Top_n_countries+0.5" }] },
+        "axis": {
+          "labelAngle": 0,
+          "tickMinStep": 1,
+          "tickCount": { "expr": "Top_n_countries" }
+        },
+        "title": "Rank Based on GDP Per Capita"
+      },
+      "tooltip": [
+        { "field": "Country Name", "type": "nominal", "title": "Country" },
+        { "field": "Year", "type": "ordinal", "title": "Year" },
+        {
+          "field": "GDP_Numeric",
+          "type": "quantitative",
+          "title": "GDP Per Capita (USD)",
+          "format": ".2f"
+        }
+      ]
+    },
+  
+    "layer": [
+      {
+        "mark": { "type": "line", "interpolate": "monotone" },
+        "encoding": {
+          "color": {
+            "field": "Country Name",
+            "scale": {
+              "domain": [
+                "Monaco",
+                "Liechtenstein",
+                "Luxembourg",
+                "Norway",
+                "Bermuda",
+                "Qatar",
+                "Switzerland",
+                "Isle of Man",
+                "Cayman Islands",
+                "Macao SAR, China",
+                "Ireland",
+                "Singapore",
+                "Iceland",
+                "United States"
+              ],
+              "range": [
+                "#542788",
+                "#8073ac",
+                "#fdb863",
+                "#e08214",
+                "#b35806",
+                "lightgray",
+                "lightgray",
+                "lightgray",
+                "lightgray",
+                "lightgray",
+                "lightgray",
+                "lightgray",
+                "lightgray",
+                "lightgray"
+              ]
+            }
+          },
+          "size": {
+            "condition": { "param": "sel_country", "empty": false, "value": 5 },
+            "value": 1
+          }
+        }
+      },
+      {
+        "params": [
+          {
+            "name": "sel_country",
+            "select": {
+              "type": "point",
+              "on": "click",
+              "fields": ["Country Name"]
+            },
+            "bind": "legend"
+          }
+        ],
+        "mark": { "type": "tick", "thickness": 5 },
+        "encoding": {
+          "color": {
+            "condition": {
+              "param": "sel_country",
+              "empty": false,
+              "value": "darkgrey"
+            },
+            "field": "Country Name",
+            "title": "Country"
+          }
+        }
+      },
+      {
+        "mark": {
+          "type": "text",
+          "fontWeight": "bold",
+          "fontSize": 11,
+          "baseline": "bottom",
+          "align": "left",
+          "dx": 5,
+          "dy": -8
+        },
+        "encoding": {
+          "text": { "value": "Monaco consistently had the highest GDP per capita throughout the decade" },
+          "color": { "value": "#542788" },
+          "opacity": {
+            "condition": {
+              "test": "datum['Country Name'] == 'Monaco' && datum.Year == 2012",
+              "value": 1
+            },
+            "value": 0
+          }
+        }
+      },
+      {
+        "mark": {
+          "type": "text",
+          "fontWeight": "bold",
+          "fontSize": 11,
+          "baseline": "bottom",
+          "align": "left",
+          "dx": 5,
+          "dy": -8
+        },
+        "encoding": {
+          "text": { "value": "Liechtenstein constantly ranked second in GDP per capita over the decade" },
+          "color": { "value": "#8073ac" },
+          "opacity": {
+            "condition": {
+              "test": "datum['Country Name'] == 'Liechtenstein' && datum.Year == 2012",
+              "value": 1
+            },
+            "value": 0
+          }
+        }
+      }
+    ]
+  }
+  

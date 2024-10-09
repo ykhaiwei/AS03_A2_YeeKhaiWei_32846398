@@ -1,0 +1,407 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/ykhaiwei/AS03_A2_YeeKhaiWei_32846398/refs/heads/main/world_vs_malaysia_gdp.csv"
+  },
+  "vconcat": [
+    {
+      "width": 1535,
+      "height": 300,
+      "layer": [
+        {
+          "layer": [
+            {
+              "encoding": {
+                "x": {
+                  "field": "Year",
+                  "type": "temporal",
+                  "scale": { "domain": { "param": "brush" } },
+                  "axis": { "title": "" }
+                },
+                "y": {
+                  "field": "World_Avg_GDP_Per_Capita",
+                  "type": "quantitative",
+                  "axis": { "title": "GDP Per Capita (USD)" },
+                  "scale": { "domain": [0, 28000] }
+                }
+              },
+              "layer": [
+                {
+                  "mark": {
+                    "type": "area",
+                    "line": { "color": "#542788" },
+                    "point": { "color": "#542788" },
+                    "color": {
+                      "x1": 1,
+                      "y1": 1,
+                      "x2": 1,
+                      "y2": 0,
+                      "gradient": "linear",
+                      "stops": [
+                        { "offset": 0, "color": "#f7f7f7" },
+                        { "offset": 1, "color": "#542788" }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "mark": {
+                    "type": "text",
+                    "baseline": "bottom",
+                    "dy": -12,
+                    "fontSize": 10
+                  },
+                  "encoding": {
+                    "text": {
+                      "field": "World_Avg_GDP_Per_Capita",
+                      "type": "quantitative",
+                      "format": ",.0f"
+                    },
+                    "color": { "value": "#542788" },
+                    "opacity": {
+                      "condition": [
+                        {
+                          "test": "datum['World_Avg_GDP_Per_Capita'] == 9048.201689063026 || datum['World_Avg_GDP_Per_Capita'] == 18771.10887290578",
+                          "value": 0
+                        }
+                      ],
+                      "value": 1
+                    }
+                  }
+                },
+                {
+                  "mark": {
+                    "type": "text",
+                    "baseline": "bottom",
+                    "dy": -12,
+                    "dx": 2,
+                    "align": "left",
+                    "fontSize": 10
+                  },
+                  "encoding": {
+                    "text": {
+                      "field": "World_Avg_GDP_Per_Capita",
+                      "type": "quantitative",
+                      "format": ",.0f"
+                    },
+                    "color": { "value": "#542788" },
+                    "opacity": {
+                      "condition": [
+                        {
+                          "test": "datum['World_Avg_GDP_Per_Capita'] == 9048.201689063026",
+                          "value": 1
+                        }
+                      ],
+                      "value": 0
+                    }
+                  }
+                },
+                {
+                  "mark": {
+                    "type": "text",
+                    "baseline": "bottom",
+                    "dy": -12,
+                    "dx": -1,
+                    "align": "right",
+                    "fontSize": 10
+                  },
+                  "encoding": {
+                    "text": {
+                      "field": "World_Avg_GDP_Per_Capita",
+                      "type": "quantitative",
+                      "format": ",.0f"
+                    },
+                    "color": { "value": "#542788" },
+                    "opacity": {
+                      "condition": [
+                        {
+                          "test": "datum['World_Avg_GDP_Per_Capita'] == 18771.10887290578",
+                          "value": 1
+                        }
+                      ],
+                      "value": 0
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "mark": { "type": "point", "color": "#542788" },
+              "encoding": {
+                "x": { "field": "Year", "type": "temporal" },
+                "y": {
+                  "field": "World_Avg_GDP_Per_Capita",
+                  "type": "quantitative"
+                },
+                "tooltip": [
+                  { "field": "Year", "type": "temporal", "format": "%Y" },
+                  {
+                    "field": "World_Avg_GDP_Per_Capita",
+                    "type": "quantitative",
+                    "format": ",.2f",
+                    "title": "GDP Per Capita (USD)"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "encoding": {
+            "x": {
+              "field": "Year",
+              "type": "temporal",
+              "scale": { "domain": { "param": "brush" } },
+              "axis": { "title": "" }
+            },
+            "y": {
+              "field": "Malaysia_GDP_Per_Capita",
+              "type": "quantitative",
+              "axis": { "title": "GDP Per Capita (USD)" }
+            }
+          },
+          "layer": [
+            {
+              "mark": {
+                "type": "area",
+                "line": { "color": "#b35806" },
+                "point": { "color": "#b35806" },
+                "color": {
+                  "x1": 1,
+                  "y1": 1,
+                  "x2": 1,
+                  "y2": 0,
+                  "gradient": "linear",
+                  "stops": [
+                    { "offset": 0, "color": "#f7f7f7" },
+                    { "offset": 1, "color": "#b35806" }
+                  ]
+                }
+              }
+            },
+            {
+              "mark": {
+                "type": "text",
+                "baseline": "bottom",
+                "dy": -10,
+                "fontSize": 10
+              },
+              "encoding": {
+                "text": {
+                  "field": "Malaysia_GDP_Per_Capita",
+                  "type": "quantitative",
+                  "format": ",.0f"
+                },
+                "color": { "value": "#b35806" },
+                "opacity": {
+                  "condition": [
+                    {
+                      "test": "datum['Malaysia_GDP_Per_Capita'] == 4087.562593493845 || datum['Malaysia_GDP_Per_Capita'] == 11971.927599153503",
+                      "value": 0
+                    }
+                  ],
+                  "value": 1
+                }
+              }
+            },
+            {
+              "mark": {
+                "type": "text",
+                "baseline": "bottom",
+                "dy": -10,
+                "dx": 2,
+                "align": "left",
+                "fontSize": 10
+              },
+              "encoding": {
+                "text": {
+                  "field": "Malaysia_GDP_Per_Capita",
+                  "type": "quantitative",
+                  "format": ",.0f"
+                },
+                "color": { "value": "#b35806" },
+                "opacity": {
+                  "condition": [
+                    {
+                      "test": "datum['Malaysia_GDP_Per_Capita'] == 4087.562593493845",
+                      "value": 1
+                    }
+                  ],
+                  "value": 0
+                }
+              }
+            },
+            {
+              "mark": {
+                "type": "text",
+                "baseline": "bottom",
+                "dy": -10,
+                "dx": -2,
+                "align": "right",
+                "fontSize": 10
+              },
+              "encoding": {
+                "text": {
+                  "field": "Malaysia_GDP_Per_Capita",
+                  "type": "quantitative",
+                  "format": ",.0f"
+                },
+                "color": { "value": "#b35806" },
+                "opacity": {
+                  "condition": [
+                    {
+                      "test": "datum['Malaysia_GDP_Per_Capita'] == 11971.927599153503",
+                      "value": 1
+                    }
+                  ],
+                  "value": 0
+                }
+              }
+            },
+            {
+              "mark": { "type": "point", "color": "#b35806" },
+              "encoding": {
+                "x": {
+                  "field": "Year",
+                  "type": "temporal",
+                  "scale": { "domain": { "param": "brush" } },
+                  "axis": { "title": "" }
+                },
+                "y": {
+                  "field": "Malaysia_GDP_Per_Capita",
+                  "type": "quantitative",
+                  "axis": { "title": "GDP Per Capita (USD)" }
+                },
+                "tooltip": [
+                  { "field": "Year", "type": "temporal", "format": "%Y" },
+                  {
+                    "field": "Malaysia_GDP_Per_Capita",
+                    "type": "quantitative",
+                    "format": ",.2f",
+                    "title": "GDP Per Capita (USD)"
+                  }
+                ]
+              }
+            },
+            {
+              "mark": {
+                "type": "text",
+                "fontSize": 11,
+                "fontWeight": "bold",
+                "baseline": "top",
+                "align": "center",
+                "color": "#2d004b",
+                "dx": 20,
+                "dy": -60
+              },
+              "encoding": {
+                "text": { "value": ["2020-2022: Rapid rise, then modest decline"] },
+                "opacity": {
+                  "condition": [
+                    {
+                      "test": "datum['World_Avg_GDP_Per_Capita'] == 16932.468155706545",
+                      "value": 1
+                    }
+                  ],
+                  "value": 0
+                }
+              }
+            },
+            {
+              "mark": {
+                "type": "text",
+                "fontSize": 11,
+                "fontWeight": "bold",
+                "baseline": "top",
+                "align": "center",
+                "color": "#7f3b08",
+                "dx": 20,
+                "dy": 10
+              },
+              "encoding": {
+                "text": { "value": ["2020-2022: Steady and continuous growth"] },
+                "opacity": {
+                  "condition": [
+                    {
+                      "test": "datum['Malaysia_GDP_Per_Capita'] == 10160.82934655923",
+                      "value": 1
+                    }
+                  ],
+                  "value": 0
+                }
+              }
+            },
+            {
+              "mark": {
+                "type": "text",
+                "fontSize": 12,
+                "fontWeight": "bold",
+                "baseline": "top",
+                "align": "right",
+                "color": "#542788"
+              },
+              "encoding": {
+                "x": { "value": 1525 },
+                "y": { "value": 10 },
+                "text": { "value": ["Worldwide Average GDP Per Capita (USD)"] },
+                "opacity": { "value": 0.1 }
+              }
+            },
+            {
+              "mark": {
+                "type": "text",
+                "fontSize": 12,
+                "fontWeight": "bold",
+                "baseline": "top",
+                "align": "right",
+                "color": "#b35806"
+              },
+              "encoding": {
+                "x": { "value": 1525 },
+                "y": { "value": 30 },
+                "text": { "value": ["Malaysia GDP Per Capita (USD)"] },
+                "opacity": { "value": 0.1 }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "width": 1535,
+      "height": 80,
+      "layer": [
+        {
+          "mark": { "type": "line", "color": "#542788" },
+          "params": [
+            {
+              "name": "brush",
+              "select": { "type": "interval", "encodings": ["x"] }
+            }
+          ],
+          "encoding": {
+            "x": { "field": "Year", "type": "temporal", "title": "" },
+            "y": {
+              "field": "World_Avg_GDP_Per_Capita",
+              "type": "quantitative",
+              "axis": { "tickCount": 3, "grid": false },
+              "title": ""
+            }
+          }
+        },
+        {
+          "mark": { "type": "line", "color": "#b35806" },
+          "encoding": {
+            "x": { "field": "Year", "type": "temporal", "title": "Year" },
+            "y": {
+              "field": "Malaysia_GDP_Per_Capita",
+              "type": "quantitative",
+              "axis": { "tickCount": 3, "grid": false },
+              "title": ""
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

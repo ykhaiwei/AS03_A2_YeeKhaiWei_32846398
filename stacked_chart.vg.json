@@ -1,0 +1,520 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 690,
+  "height": 500,
+  "data": {
+    "url": "https://raw.githubusercontent.com/ykhaiwei/AS03_A2_YeeKhaiWei_32846398/refs/heads/main/world_vs_continents_countries_avg_gdp.csv"
+  },
+  "transform": [
+    {
+      "calculate": "pad(datum['Continent_Country_ID'], 3, '0', 'left')",
+      "as": "Y"
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "Continent Name",
+      "type": "nominal"
+    },
+    "y": { "field": "Y", "sort": "descending", "type": "ordinal" }
+  },
+  "layer": [
+    {
+      "mark": { "type": "rect", "cornerRadius": 10, "strokeMiterLimit": 10},
+      "transform": [
+        {
+          "calculate": "pad(datum['Continent_Country_ID'], 3, '0', 'left')",
+          "as": "Y"
+        }
+      ],
+      "encoding": {
+        "x": {
+          "field": "Continent Name",
+          "type": "nominal",
+          "axis": { "labelAngle": 0 },
+          "title": "Continent"
+        },
+        "y": {
+          "field": "Y",
+          "type": "ordinal",
+          "axis": null
+        },
+        "color": {
+          "field": "Above_World_Avg",
+          "type": "nominal",
+          "legend": null,
+          "scale": {
+            "domain": ["1", "0"],
+            "range": ["#542788", "#b35806"]
+          }
+        },
+        "tooltip": [
+          { "field": "Country Name", "type": "nominal" },
+          {
+            "field": "Country_Avg_GDP_Per_Capita",
+            "type": "quantitative",
+            "title": "Average GDP Per Capita (USD)",
+            "format": ",.2f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontWeight": "bold",
+        "fontSize": 12,
+        "baseline": "middle",
+        "align": "center",
+        "xOffset": -9,
+        "yOffset": -13
+      },
+      "encoding": {
+        "text": { "value": "0" },
+        "color": { "value": "#542788" },
+        "opacity": {
+          "condition": {
+            "test": "datum['Country Name'] == 'Algeria'",
+            "value": 1
+          },
+          "value": 0
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontWeight": "bold",
+        "fontSize": 12,
+        "baseline": "middle",
+        "align": "center",
+        "yOffset": -13.5
+      },
+      "encoding": {
+        "text": { "value": ":" },
+        "color": { "value": "black" },
+        "opacity": {
+          "condition": {
+            "test": "datum['Country Name'] == 'Algeria'",
+            "value": 1
+          },
+          "value": 0
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontWeight": "bold",
+        "fontSize": 12,
+        "baseline": "middle",
+        "align": "center",
+        "xOffset": 12,
+        "yOffset": -13
+      },
+      "encoding": {
+        "text": { "value": "54" },
+        "color": { "value": "#b35806" },
+        "opacity": {
+          "condition": {
+            "test": "datum['Country Name'] == 'Algeria'",
+            "value": 1
+          },
+          "value": 0
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontWeight": "bold",
+        "fontSize": 12,
+        "baseline": "middle",
+        "align": "center",
+        "xOffset": -12,
+        "yOffset": -13
+      },
+      "encoding": {
+        "text": { "value": "14" },
+        "color": { "value": "#542788" },
+        "opacity": {
+          "condition": {
+            "test": "datum['Country Name'] == 'Bahrain'",
+            "value": 1
+          },
+          "value": 0
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontWeight": "bold",
+        "fontSize": 12,
+        "baseline": "middle",
+        "align": "center",
+        "yOffset": -13.5
+      },
+      "encoding": {
+        "text": { "value": ":" },
+        "color": { "value": "black" },
+        "opacity": {
+          "condition": {
+            "test": "datum['Country Name'] == 'Bahrain'",
+            "value": 1
+          },
+          "value": 0
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontWeight": "bold",
+        "fontSize": 12,
+        "baseline": "middle",
+        "align": "center",
+        "xOffset": 12,
+        "yOffset": -13
+      },
+      "encoding": {
+        "text": { "value": "37" },
+        "color": { "value": "#b35806" },
+        "opacity": {
+          "condition": {
+            "test": "datum['Country Name'] == 'Bahrain'",
+            "value": 1
+          },
+          "value": 0
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontWeight": "bold",
+        "fontSize": 12,
+        "baseline": "middle",
+        "align": "center",
+        "xOffset": -12,
+        "yOffset": -13
+      },
+      "encoding": {
+        "text": { "value": "30" },
+        "color": { "value": "#542788" },
+        "opacity": {
+          "condition": {
+            "test": "datum['Country Name'] == 'Andorra'",
+            "value": 1
+          },
+          "value": 0
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontWeight": "bold",
+        "fontSize": 12,
+        "baseline": "middle",
+        "align": "center",
+        "yOffset": -13.5
+      },
+      "encoding": {
+        "text": { "value": ":" },
+        "color": { "value": "black" },
+        "opacity": {
+          "condition": {
+            "test": "datum['Country Name'] == 'Andorra'",
+            "value": 1
+          },
+          "value": 0
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontWeight": "bold",
+        "fontSize": 12,
+        "baseline": "middle",
+        "align": "center",
+        "xOffset": 12,
+        "yOffset": -13
+      },
+      "encoding": {
+        "text": { "value": "22" },
+        "color": { "value": "#b35806" },
+        "opacity": {
+          "condition": {
+            "test": "datum['Country Name'] == 'Andorra'",
+            "value": 1
+          },
+          "value": 0
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontWeight": "bold",
+        "fontSize": 12,
+        "baseline": "middle",
+        "align": "center",
+        "xOffset": -12,
+        "yOffset": -13
+      },
+      "encoding": {
+        "text": { "value": "15" },
+        "color": { "value": "#542788" },
+        "opacity": {
+          "condition": {
+            "test": "datum['Country Name'] == 'Aruba'",
+            "value": 1
+          },
+          "value": 0
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontWeight": "bold",
+        "fontSize": 12,
+        "baseline": "middle",
+        "align": "center",
+        "yOffset": -13.5
+      },
+      "encoding": {
+        "text": { "value": ":" },
+        "color": { "value": "black" },
+        "opacity": {
+          "condition": {
+            "test": "datum['Country Name'] == 'Aruba'",
+            "value": 1
+          },
+          "value": 0
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontWeight": "bold",
+        "fontSize": 12,
+        "baseline": "middle",
+        "align": "center",
+        "xOffset": 12,
+        "yOffset": -13
+      },
+      "encoding": {
+        "text": { "value": "19" },
+        "color": { "value": "#b35806" },
+        "opacity": {
+          "condition": {
+            "test": "datum['Country Name'] == 'Aruba'",
+            "value": 1
+          },
+          "value": 0
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontWeight": "bold",
+        "fontSize": 12,
+        "baseline": "middle",
+        "align": "center",
+        "xOffset": -9,
+        "yOffset": -13
+      },
+      "encoding": {
+        "text": { "value": "6" },
+        "color": { "value": "#542788" },
+        "opacity": {
+          "condition": {
+            "test": "datum['Country Name'] == 'Australia'",
+            "value": 1
+          },
+          "value": 0
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontWeight": "bold",
+        "fontSize": 12,
+        "baseline": "middle",
+        "align": "center",
+        "yOffset": -13.5
+      },
+      "encoding": {
+        "text": { "value": ":" },
+        "color": { "value": "black" },
+        "opacity": {
+          "condition": {
+            "test": "datum['Country Name'] == 'Australia'",
+            "value": 1
+          },
+          "value": 0
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontWeight": "bold",
+        "fontSize": 12,
+        "baseline": "middle",
+        "align": "center",
+        "xOffset": 12,
+        "yOffset": -13
+      },
+      "encoding": {
+        "text": { "value": "13" },
+        "color": { "value": "#b35806" },
+        "opacity": {
+          "condition": {
+            "test": "datum['Country Name'] == 'Australia'",
+            "value": 1
+          },
+          "value": 0
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontWeight": "bold",
+        "fontSize": 12,
+        "baseline": "middle",
+        "align": "center",
+        "xOffset": -9,
+        "yOffset": -13
+      },
+      "encoding": {
+        "text": { "value": "0" },
+        "color": { "value": "#542788" },
+        "opacity": {
+          "condition": {
+            "test": "datum['Country Name'] == 'Argentina'",
+            "value": 1
+          },
+          "value": 0
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontWeight": "bold",
+        "fontSize": 12,
+        "baseline": "middle",
+        "align": "center",
+        "yOffset": -13.5
+      },
+      "encoding": {
+        "text": { "value": ":" },
+        "color": { "value": "black" },
+        "opacity": {
+          "condition": {
+            "test": "datum['Country Name'] == 'Argentina'",
+            "value": 1
+          },
+          "value": 0
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontWeight": "bold",
+        "fontSize": 12,
+        "baseline": "middle",
+        "align": "center",
+        "xOffset": 12,
+        "yOffset": -13
+      },
+      "encoding": {
+        "text": { "value": "12" },
+        "color": { "value": "#b35806" },
+        "opacity": {
+          "condition": {
+            "test": "datum['Country Name'] == 'Argentina'",
+            "value": 1
+          },
+          "value": 0
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontWeight": "bold",
+        "fontSize": 12,
+        "baseline": "bottom",
+        "align": "right"
+      },
+      "encoding": {
+        "x": { "value": 690 },
+        "y": { "value": -35 },
+        "text": { "value": "Above Average" },
+        "color": { "value": "#542788" },
+        "opacity": {
+          "condition": {
+            "test": "datum['Country Name'] == 'Argentina'",
+            "value": 1
+          },
+          "value": 0
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontWeight": "bold",
+        "fontSize": 12,
+        "baseline": "bottom",
+        "align": "right"
+      },
+      "encoding": {
+        "x": { "value": 690 },
+        "y": { "value": -20 },
+        "text": { "value": "Below Average" },
+        "color": { "value": "#b35806" },
+        "opacity": {
+          "condition": {
+            "test": "datum['Country Name'] == 'Argentina'",
+            "value": 1
+          },
+          "value": 0
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "baseline": "bottom",
+        "align": "left"
+      },
+      "encoding": {
+        "x": { "value": 5 },
+        "y": { "value": -35 },
+        "text": { "value": "World Average GDP Per Capita: USD 15,336.27" },
+        "color": { "value": "black" },
+        "opacity": {
+          "condition": {
+            "test": "datum['Country Name'] == 'Algeria'",
+            "value": 1
+          },
+          "value": 0
+        }
+      }
+    }
+  ],
+  "config": { "view": { "strokeOpacity": 0 } }
+}

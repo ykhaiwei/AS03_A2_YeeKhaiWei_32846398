@@ -1,0 +1,512 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "width": 745,
+  "height": 580,
+  "data": [
+    {
+      "name": "continent_data",
+      "values": {
+        "aggregations": {
+          "table": {
+            "buckets": [
+              {
+                "key": {
+                  "continent": "Africa",
+                  "incomeLevel": "High Income"
+                },
+                "countryCount": 1
+              },
+              {
+                "key": {
+                  "continent": "Africa",
+                  "incomeLevel": "Upper Middle Income"
+                },
+                "countryCount": 6
+              },
+              {
+                "key": {
+                  "continent": "Africa",
+                  "incomeLevel": "Lower Middle Income"
+                },
+                "countryCount": 14
+              },
+              {
+                "key": {
+                  "continent": "Africa",
+                  "incomeLevel": "Low Income"
+                },
+                "countryCount": 31
+              },
+              {
+                "key": {
+                  "continent": "Asia",
+                  "incomeLevel": "High Income"
+                },
+                "countryCount": 12
+              },
+              {
+                "key": {
+                  "continent": "Asia",
+                  "incomeLevel": "Upper Middle Income"
+                },
+                "countryCount": 8
+              },
+              {
+                "key": {
+                  "continent": "Asia",
+                  "incomeLevel": "Lower Middle Income"
+                },
+                "countryCount": 16
+              },
+              {
+                "key": {
+                  "continent": "Asia",
+                  "incomeLevel": "Low Income"
+                },
+                "countryCount": 12
+              },
+              {
+                "key": {
+                  "continent": "Europe",
+                  "incomeLevel": "High Income"
+                },
+                "countryCount": 28
+              },
+              {
+                "key": {
+                  "continent": "Europe",
+                  "incomeLevel": "Upper Middle Income"
+                },
+                "countryCount": 10
+              },
+              {
+                "key": {
+                  "continent": "Europe",
+                  "incomeLevel": "Lower Middle Income"
+                },
+                "countryCount": 7
+              },
+              {
+                "key": {
+                  "continent": "Europe",
+                  "incomeLevel": "Low Income"
+                },
+                "countryCount": 3
+              },
+              {
+                "key": {
+                  "continent": "North America",
+                  "incomeLevel": "High Income"
+                },
+                "countryCount": 12
+              },
+              {
+                "key": {
+                  "continent": "North America",
+                  "incomeLevel": "Upper Middle Income"
+                },
+                "countryCount": 9
+              },
+              {
+                "key": {
+                  "continent": "North America",
+                  "incomeLevel": "Lower Middle Income"
+                },
+                "countryCount": 7
+              },
+              {
+                "key": {
+                  "continent": "North America",
+                  "incomeLevel": "Low Income"
+                },
+                "countryCount": 1
+              },
+              {
+                "key": {
+                  "continent": "Oceania",
+                  "incomeLevel": "High Income"
+                },
+                "countryCount": 5
+              },
+              {
+                "key": {
+                  "continent": "Oceania",
+                  "incomeLevel": "Upper Middle Income"
+                },
+                "countryCount": 3
+              },
+              {
+                "key": {
+                  "continent": "Oceania",
+                  "incomeLevel": "Lower Middle Income"
+                },
+                "countryCount": 7
+              },
+              {
+                "key": {
+                  "continent": "Oceania",
+                  "incomeLevel": "Low Income"
+                },
+                "countryCount": 1
+              },
+              {
+                "key": {
+                  "continent": "South America",
+                  "incomeLevel": "High Income"
+                },
+                "countryCount": 2
+              },
+              {
+                "key": {
+                  "continent": "South America",
+                  "incomeLevel": "Upper Middle Income"
+                },
+                "countryCount": 6
+              },
+              {
+                "key": {
+                  "continent": "South America",
+                  "incomeLevel": "Lower Middle Income"
+                },
+                "countryCount": 4
+              },
+              {
+                "key": {
+                  "continent": "South America",
+                  "incomeLevel": "Low Income"
+                },
+                "countryCount": 1
+              }
+            ]
+          }
+        }
+      },
+      "format": { "property": "aggregations.table.buckets" },
+      "transform": [
+        { "type": "formula", "expr": "datum.key.continent", "as": "continent" },
+        {
+          "type": "formula",
+          "expr": "datum.key.incomeLevel",
+          "as": "incomeLevel"
+        },
+        {
+          "type": "formula",
+          "expr": "datum.countryCount",
+          "as": "countryCount"
+        }
+      ]
+    },
+    {
+      "name": "nodes",
+      "source": "continent_data",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "!groupSelector || groupSelector.continent == datum.continent || groupSelector.incomeLevel == datum.incomeLevel"
+        },
+        {
+          "type": "formula",
+          "expr": "datum.continent + datum.incomeLevel",
+          "as": "key"
+        },
+        {
+          "type": "fold",
+          "fields": ["continent", "incomeLevel"],
+          "as": ["stackType", "groupId"]
+        },
+        {
+          "type": "formula",
+          "expr": "datum.stackType == 'continent' ? datum.continent + ' ' + datum.incomeLevel : datum.incomeLevel + ' ' + datum.continent",
+          "as": "sortField"
+        },
+        {
+          "type": "stack",
+          "groupby": ["stackType"],
+          "sort": { "field": "sortField", "order": "descending" },
+          "field": "countryCount"
+        },
+        { "type": "formula", "expr": "(datum.y0 + datum.y1)/2", "as": "yc" }
+      ]
+    },
+    {
+      "name": "groups",
+      "source": "nodes",
+      "transform": [
+        {
+          "type": "aggregate",
+          "groupby": ["stackType", "groupId"],
+          "fields": ["countryCount"],
+          "ops": ["sum"],
+          "as": ["total"]
+        },
+        {
+          "type": "stack",
+          "groupby": ["stackType"],
+          "sort": { "field": "groupId", "order": "descending" },
+          "field": "total"
+        },
+        { "type": "formula", "expr": "scale('y', datum.y0)", "as": "scaledY0" },
+        { "type": "formula", "expr": "scale('y', datum.y1)", "as": "scaledY1" },
+        {
+          "type": "formula",
+          "expr": "datum.stackType == 'continent'",
+          "as": "rightLabel"
+        },
+        {
+          "type": "formula",
+          "expr": "datum.total/domain('y')[1]",
+          "as": "percentage"
+        }
+      ]
+    },
+    {
+      "name": "destinationNodes",
+      "source": "nodes",
+      "transform": [
+        { "type": "filter", "expr": "datum.stackType == 'incomeLevel'" }
+      ]
+    },
+    {
+      "name": "edges",
+      "source": "nodes",
+      "transform": [
+        { "type": "filter", "expr": "datum.stackType == 'continent'" },
+        {
+          "type": "lookup",
+          "from": "destinationNodes",
+          "key": "key",
+          "fields": ["key"],
+          "as": ["target"]
+        },
+        {
+          "type": "linkpath",
+          "orient": "horizontal",
+          "shape": "diagonal",
+          "sourceY": { "expr": "scale('y', datum.yc)" },
+          "sourceX": { "expr": "scale('x', 'continent') + bandwidth('x')" },
+          "targetY": { "expr": "scale('y', datum.target.yc)" },
+          "targetX": { "expr": "scale('x', 'incomeLevel')" }
+        },
+        {
+          "type": "formula",
+          "expr": "range('y')[0]-scale('y', datum.countryCount)",
+          "as": "strokeWidth"
+        },
+        {
+          "type": "formula",
+          "expr": "datum.countryCount/domain('y')[1]",
+          "as": "percentage"
+        }
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "x",
+      "type": "band",
+      "range": "width",
+      "domain": ["continent", "incomeLevel"],
+      "paddingOuter": 0.05,
+      "paddingInner": 0.95
+    },
+    {
+      "name": "y",
+      "type": "linear",
+      "range": "height",
+      "domain": { "data": "nodes", "field": "y1" }
+    },
+    {
+      "name": "color",
+      "type": "ordinal",
+      "range": [
+        "#542788",
+        "#8073ac",
+        "#b2abd2",
+        "#fdb863",
+        "#e08214",
+        "#b35806",
+        "#8e0152",
+        "#c51b7d",
+        "#de77ae",
+        "#f1b6da",
+        "#fdbe85"
+      ],
+      "domain": {
+        "data": "continent_data",
+        "fields": ["continent", "incomeLevel"]
+      }
+    },
+    {
+      "name": "stackNames",
+      "type": "ordinal",
+      "range": ["Continent", "Income Level"],
+      "domain": ["continent", "incomeLevel"]
+    }
+  ],
+  "marks": [
+    {
+      "type": "path",
+      "name": "edgeMark",
+      "from": { "data": "edges" },
+      "clip": true,
+      "encode": {
+        "update": {
+          "stroke": [
+            {
+              "test": "groupSelector && groupSelector.stackType == 'continent'",
+              "scale": "color",
+              "field": "incomeLevel"
+            },
+            { "scale": "color", "field": "continent" }
+          ],
+          "strokeWidth": { "field": "strokeWidth" },
+          "path": { "field": "path" },
+          "strokeOpacity": {
+            "signal": "!groupSelector && (groupHover.continent == datum.continent || groupHover.incomeLevel == datum.incomeLevel) ? 0.9 : 0.3"
+          },
+          "zindex": {
+            "signal": "!groupSelector && (groupHover.continent == datum.continent || groupHover.incomeLevel == datum.incomeLevel) ? 1 : 0"
+          },
+          "tooltip": {
+            "signal": "'Continent: ' + datum.continent + ' | Income Group: ' + datum.incomeLevel + ' | Countries: ' + format(datum.countryCount, ',.0f') + ' (' + format(datum.percentage, '.1%') + ')'"
+          }
+        },
+        "hover": {
+          "strokeOpacity": { "value": 1 }
+        }
+      }
+    },
+    {
+      "type": "rect",
+      "name": "groupMark",
+      "from": { "data": "groups" },
+      "encode": {
+        "enter": {
+          "fill": { "scale": "color", "field": "groupId" },
+          "width": { "scale": "x", "band": 1 }
+        },
+        "update": {
+          "x": { "scale": "x", "field": "stackType" },
+          "y": { "field": "scaledY0" },
+          "y2": { "field": "scaledY1" },
+          "fillOpacity": { "value": 1 },
+          "tooltip": {
+            "signal": "datum.groupId + ': ' + format(datum.total, ',.0f') + ' countries (' + format(datum.percentage, '.1%') + ')'"
+          }
+        },
+        "hover": {
+          "fillOpacity": { "value": 1 }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": { "data": "groups" },
+      "interactive": false,
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "scale('x', datum.stackType) + (datum.rightLabel ? bandwidth('x') + 8 : -8)"
+          },
+          "yc": { "signal": "(datum.scaledY0 + datum.scaledY1)/2" },
+          "align": { "signal": "datum.rightLabel ? 'left' : 'right'" },
+          "baseline": { "value": "middle" },
+          "fontWeight": { "value": "bold" },
+          "text": {
+            "signal": "abs(datum.scaledY0 - datum.scaledY1) > 13 ? datum.groupId : ''"
+          }
+        }
+      }
+    },
+    {
+      "type": "group",
+      "data": [
+        {
+          "name": "dataForShowAll",
+          "values": [{}],
+          "transform": [{ "type": "filter", "expr": "groupSelector" }]
+        }
+      ],
+      "encode": {
+        "enter": {
+          "xc": { "signal": "width/2" },
+          "y": { "value": 30 },
+          "width": { "value": 80 },
+          "height": { "value": 30 }
+        }
+      },
+      "marks": [
+        {
+          "type": "group",
+          "name": "groupReset",
+          "from": { "data": "dataForShowAll" },
+          "encode": {
+            "enter": {
+              "cornerRadius": { "value": 6 },
+              "fill": { "value": "#f5f5f5" },
+              "stroke": { "value": "#c1c1c1" },
+              "strokeWidth": { "value": 2 },
+              "height": { "field": { "group": "height" } },
+              "width": { "field": { "group": "width" } }
+            },
+            "update": {
+              "opacity": { "value": 1 }
+            },
+            "hover": {
+              "opacity": { "value": 0.7 }
+            }
+          },
+          "marks": [
+            {
+              "type": "text",
+              "interactive": false,
+              "encode": {
+                "enter": {
+                  "xc": { "field": { "group": "width" }, "mult": 0.5 },
+                  "yc": {
+                    "field": { "group": "height" },
+                    "mult": 0.5
+                  },
+                  "align": { "value": "center" },
+                  "baseline": { "value": "middle" },
+                  "fontWeight": { "value": "bold" },
+                  "text": { "value": "Show All" }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "signals": [
+    {
+      "name": "groupHover",
+      "value": {},
+      "on": [
+        {
+          "events": "@groupMark:mouseover",
+          "update": "{continent: datum.stackType == 'continent' && datum.groupId, incomeLevel: datum.stackType == 'incomeLevel' && datum.groupId}"
+        },
+        { "events": "mouseout", "update": "{}" }
+      ]
+    },
+    {
+      "name": "groupSelector",
+      "value": false,
+      "on": [
+        {
+          "events": "@groupMark:click!",
+          "update": "{stackType: datum.stackType, continent: datum.stackType == 'continent' && datum.groupId, incomeLevel: datum.stackType == 'incomeLevel' && datum.groupId}"
+        },
+        {
+          "events": [
+            { "type": "click", "markname": "groupReset" },
+            { "type": "dblclick" }
+          ],
+          "update": "false"
+        }
+      ]
+    }
+  ]
+}

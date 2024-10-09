@@ -1,0 +1,86 @@
+:root {
+  --purple: #542788;
+  --brown: #b35806;
+  --description-font-size: 16px;
+  --idiom-font-size: 26px;
+  --title-font: "Noto Serif", serif;
+}
+
+body * {
+  font-family: "PT Sans", sans-serif;
+}
+
+body {
+  width: 1920px;
+}
+
+.pure-g {
+  margin-bottom: 40px;
+}
+
+.footer {
+  font-size: 12px;
+  margin-left: 100px;
+  font-style: italic;
+}
+
+.page-title {
+  font-size: 60px;
+  font-weight: 600;
+  margin-top: 70px;
+  margin-bottom: 70px;
+  text-align: center;
+  color: var(--purple);
+  font-family: var(--title-font);
+}
+
+.page-title-description {
+  font-size: var(--description-font-size);
+  font-weight: 300;
+  margin-bottom: 20px;
+  color: #464646;
+  margin-left: 100px;
+}
+
+.line-break {
+  width: 90%;
+  margin: 50px auto;
+  border-bottom: 1px solid lightgray;
+}
+
+.idiom-title {
+  font-size: var(--idiom-font-size);
+  font-weight: 500;
+  margin-top: 3px;
+  color: black;
+  font-family: var(--title-font);
+}
+
+.idiom-subtitle {
+  font-size: var(--description-font-size);
+  font-weight: 300;
+  margin-bottom: 20px;
+  color: #464646;
+  padding: 20px 225px 0 0;
+}
+
+.content {
+  margin-left: 100px;
+}
+
+.idiom {
+  margin-bottom: 60px;
+}
+
+.brown {
+  color: var(--brown);
+}
+
+.purple {
+  color: var(--purple);
+}
+
+.bold {
+  font-weight: 700;
+  font-family: inherit;
+}
