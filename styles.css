@@ -44,9 +44,9 @@ body {
 }
 
 .line-break {
-  width: 83%;
+  width: 1590px;
   margin: 50px auto;
-  border-bottom: 1px solid lightgray;
+  border-bottom: 2px solid lightgray;
 }
 
 .idiom-title {
