@@ -12,6 +12,7 @@ body * {
 
 body {
   width: 1920px;
+  overflow-x: hidden;
 }
 
 .pure-g {
@@ -20,7 +21,7 @@ body {
 
 .footer {
   font-size: 12px;
-  margin-left: 100px;
+  margin-left: 10px;
   font-style: italic;
 }
 
@@ -29,6 +30,7 @@ body {
   font-weight: 800;
   margin-top: 70px;
   margin-bottom: 70px;
+  margin-left: -300px;
   text-align: center;
   color: var(--purple);
   font-family: var(--title-font);
@@ -43,8 +45,9 @@ body {
 }
 
 .line-break {
-  width: 90%;
+  width: 80%;
   margin: 50px auto;
+  margin-left: 20px;
   border-bottom: 1px solid lightgray;
 }
 
@@ -65,10 +68,11 @@ body {
 }
 
 .content {
-  margin-left: 100px;
+  margin-left: 70px;
 }
 
 .idiom {
+  margin-left: -100px;
   margin-bottom: 60px;
 }
 

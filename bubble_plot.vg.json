@@ -4,19 +4,8 @@
     "url": "https://raw.githubusercontent.com/ykhaiwei/AS03_A2_YeeKhaiWei_32846398/refs/heads/main/Countries.csv"
   },
   "width": 485,
-  "height": 385,
+  "height": 355,
   "params": [
-    {
-      "name": "Year",
-      "value": 2010,
-      "bind": {
-        "input": "range",
-        "min": 2000,
-        "max": 2022,
-        "step": 1,
-        "name": "Year:  "
-      }
-    },
     {
       "name": "Continent_selection",
       "bind": {
@@ -40,6 +29,17 @@
           "South America"
         ],
         "name": "Continent:  "
+      }
+    },
+    {
+      "name": "Year",
+      "value": 2010,
+      "bind": {
+        "input": "range",
+        "min": 2000,
+        "max": 2022,
+        "step": 1,
+        "name": "Year:  "
       }
     }
   ],

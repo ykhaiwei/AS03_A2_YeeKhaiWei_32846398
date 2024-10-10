@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
   "width": 745,
-  "height": 590,
+  "height": 570,
   "data": [
     {
       "name": "continent_data",
@@ -327,8 +327,8 @@
         "#b35806",
         "#8e0152",
         "#c51b7d",
-        "green",
-        "red"
+        "#de77ae",
+        "#f1b6da"
       ],
       "domain": {
         "data": "continent_data",

@@ -1,7 +1,11 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 560,
-  "height": 415,
+  "width": 680,
+  "height": 500,
+  "config": {
+    "background": "transparent",
+    "view": { "stroke": null }
+  },
   "data": {
     "url": "https://raw.githubusercontent.com/ykhaiwei/AS03_A2_YeeKhaiWei_32846398/refs/heads/main/ne_110m.json",
     "format": { "type": "topojson", "feature": "ne_110m_admin_0_countries" }
@@ -19,7 +23,7 @@
       }
     }
   ],
-  "projection": { "type": "equalEarth", "scale": 125 },
+  "projection": { "type": "equalEarth" },
   "layer": [
     {
       "data": {
@@ -79,11 +83,19 @@
           "title": "GDP Per Capita (USD)",
           "type": "ordinal",
           "scale": {
-            "domain": ["0-13,000", "13,000-35,000", "35,000-70,000", "70,000-130,000", "130,000-234,000"],
+            "domain": [
+              "0-13,000",
+              "13,000-35,000",
+              "35,000-70,000",
+              "70,000-130,000",
+              "130,000-234,000"
+            ],
             "range": ["#fee0b6", "#fdb863", "#e08214", "#b35806", "#7f3b08"]
           },
           "legend": {
-            "symbolType": "square"
+            "symbolType": "square",
+            "orient": "bottom",
+            "offset": -50
           }
         },
         "tooltip": [
