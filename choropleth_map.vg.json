@@ -131,6 +131,38 @@
         "latitude": { "field": "Latitude", "type": "quantitative" },
         "longitude": { "field": "Longitude", "type": "quantitative" }
       }
+    },
+    {
+      "transform": [
+        {
+          "lookup": "properties.NAME",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/ykhaiwei/AS03_A2_YeeKhaiWei_32846398/refs/heads/main/Malaysia.csv"
+            },
+            "key": "name",
+            "fields": ["latitude", "longitude"]
+          }
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 10,
+        "color": "#542788",
+        "fontWeight": "bold"
+      },
+      "encoding": {
+        "longitude": { "field": "longitude", "type": "quantitative" },
+        "latitude": { "field": "latitude", "type": "quantitative" },
+        "text": { "field": "properties.NAME", "type": "nominal" },
+        "opacity": {
+          "condition": {
+            "test": "datum.properties.NAME == 'Malaysia'",
+            "value": 1
+          },
+          "value": 0
+        }
+      }
     }
   ]
 }

@@ -110,7 +110,7 @@
           },
           "legend": { "title": "Continent", "orient": "top-left"}
         },
-        "opacity": { "value": 0.8 },
+        "opacity": { "value": 0.7 },
         "tooltip": [
           { "field": "Country Name", "type": "nominal", "title": "Country" },
           {
