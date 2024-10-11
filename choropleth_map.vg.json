@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 680,
-  "height": 500,
+  "width": 560,
+  "height": 450,
   "config": {
     "background": "transparent",
     "view": { "stroke": null }
@@ -95,7 +95,7 @@
           "legend": {
             "symbolType": "square",
             "orient": "bottom",
-            "offset": -50
+            "offset": -40
           }
         },
         "tooltip": [

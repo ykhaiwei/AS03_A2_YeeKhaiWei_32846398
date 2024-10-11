@@ -2,7 +2,7 @@
   --purple: #542788;
   --brown: #b35806;
   --description-font-size: 16px;
-  --idiom-font-size: 28px;
+  --idiom-font-size: 32px;
   --title-font: "Tahoma", sans-serif;
 }
 
@@ -11,7 +11,13 @@ body * {
 }
 
 body {
-  width: 1920px;
+  width: 100%;
+}
+
+.container {
+  width: 1300px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
 .pure-g {
@@ -20,7 +26,6 @@ body {
 
 .footer {
   font-size: 12px;
-  margin-left: 10px;
   font-style: italic;
 }
 
@@ -29,7 +34,6 @@ body {
   font-weight: 800;
   margin-top: 70px;
   margin-bottom: 70px;
-  margin-left: -325px;
   text-align: center;
   color: var(--purple);
   font-family: var(--title-font);
@@ -40,11 +44,10 @@ body {
   font-weight: 300;
   margin-bottom: 20px;
   color: #464646;
-  margin-left: 100px;
 }
 
 .line-break {
-  width: 1590px;
+  width: 100%;
   margin: 50px auto;
   border-bottom: 2px solid lightgray;
 }
@@ -52,7 +55,7 @@ body {
 .idiom-title {
   font-size: var(--idiom-font-size);
   font-weight: 600;
-  margin-top: 10px;
+  margin-top: 5px;
   color: black;
   font-family: var(--title-font);
 }
@@ -66,11 +69,11 @@ body {
 }
 
 .content {
-  margin-left: 70px;
+  margin-left: 30px;
 }
 
 .idiom {
-  margin-left: -100px;
+  margin-left: -50px;
   margin-bottom: 60px;
 }
 

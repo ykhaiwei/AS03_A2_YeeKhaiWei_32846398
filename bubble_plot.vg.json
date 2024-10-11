@@ -3,8 +3,8 @@
   "data": {
     "url": "https://raw.githubusercontent.com/ykhaiwei/AS03_A2_YeeKhaiWei_32846398/refs/heads/main/Countries.csv"
   },
-  "width": 485,
-  "height": 355,
+  "width": 450,
+  "height": 320,
   "params": [
     {
       "name": "Continent_selection",
@@ -33,7 +33,7 @@
     },
     {
       "name": "Year",
-      "value": 2010,
+      "value": 2008,
       "bind": {
         "input": "range",
         "min": 2000,
@@ -81,7 +81,11 @@
             "domain": [1000, 100000, 500000, 1000000, 5000000],
             "range": [20, 40, 80, 160, 360, 720]
           },
-          "legend": { "format": ".1s", "title": "Land Area (km²)" }
+          "legend": {
+            "format": ".1s",
+            "title": "Land Area (km²)",
+            "orient": "bottom-right"
+          }
         },
         "color": {
           "field": "Continent Name",
@@ -104,7 +108,7 @@
               "#b35806"
             ]
           },
-          "legend": { "title": "Continent" }
+          "legend": { "title": "Continent", "orient": "top-left"}
         },
         "opacity": { "value": 0.8 },
         "tooltip": [

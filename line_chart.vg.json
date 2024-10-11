@@ -5,8 +5,8 @@
   },
   "vconcat": [
     {
-      "width": 1450,
-      "height": 300,
+      "width": 1180,
+      "height": 280,
       "layer": [
         {
           "layer": [
@@ -291,7 +291,7 @@
                 "baseline": "top",
                 "align": "center",
                 "color": "#2d004b",
-                "dx": 15,
+                "dx": -10,
                 "dy": -60
               },
               "encoding": {
@@ -315,7 +315,7 @@
                 "baseline": "top",
                 "align": "center",
                 "color": "#7f3b08",
-                "dx": 15,
+                "dx": -10,
                 "dy": 10
               },
               "encoding": {
@@ -341,7 +341,7 @@
                 "color": "#542788"
               },
               "encoding": {
-                "x": { "value": 1445 },
+                "x": { "value": 1175 },
                 "y": { "value": 10 },
                 "text": { "value": ["Worldwide Average GDP Per Capita (USD)"] },
                 "opacity": { "value": 0.1 }
@@ -357,7 +357,7 @@
                 "color": "#b35806"
               },
               "encoding": {
-                "x": { "value": 1445 },
+                "x": { "value": 1175 },
                 "y": { "value": 30 },
                 "text": { "value": ["Malaysia GDP Per Capita (USD)"] },
                 "opacity": { "value": 0.1 }
@@ -368,8 +368,8 @@
       ]
     },
     {
-      "width": 1450,
-      "height": 80,
+      "width": 1180,
+      "height": 60,
       "layer": [
         {
           "mark": { "type": "line", "color": "#542788" },
