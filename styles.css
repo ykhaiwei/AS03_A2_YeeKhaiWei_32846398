@@ -1,8 +1,13 @@
 :root {
   --purple: #542788;
+  --light-purple: #8073ac;
+  --lighter-purple: #b2abd2;
   --brown: #b35806;
+  --light-brown: #e08214;
+  --dark-prink: #8e0152;
+  --light-pink: #f1b6da;
   --description-font-size: 16px;
-  --idiom-font-size: 32px;
+  --idiom-font-size: 28px;
   --title-font: "Tahoma", sans-serif;
 }
 
@@ -32,8 +37,8 @@ body {
 .page-title {
   font-size: 60px;
   font-weight: 800;
-  margin-top: 70px;
-  margin-bottom: 70px;
+  margin-top: 50px;
+  margin-bottom: 50px;
   text-align: center;
   color: var(--purple);
   font-family: var(--title-font);
@@ -54,7 +59,7 @@ body {
 
 .idiom-title {
   font-size: var(--idiom-font-size);
-  font-weight: 600;
+  font-weight: 550;
   margin-top: 5px;
   color: black;
   font-family: var(--title-font);
@@ -65,7 +70,7 @@ body {
   font-weight: 300;
   margin-bottom: 20px;
   color: #464646;
-  padding: 20px 225px 0 0;
+  padding: 20px 50px 0 0;
 }
 
 .content {
@@ -77,12 +82,24 @@ body {
   margin-bottom: 60px;
 }
 
+.purple {
+  color: var(--purple);
+}
+
+.light-purple {
+  color: var(--light-purple);
+}
+
+.lighter-purple {
+  color: var(--lighter-purple);
+}
+
 .brown {
   color: var(--brown);
 }
 
-.purple {
-  color: var(--purple);
+.light-brown {
+  color: var(--light-brown);
 }
 
 .bold {
