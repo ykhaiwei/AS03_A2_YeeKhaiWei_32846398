@@ -1,11 +1,10 @@
 :root {
   --purple: #542788;
   --light-purple: #8073ac;
-  --lighter-purple: #b2abd2;
   --brown: #b35806;
   --light-brown: #e08214;
   --dark-prink: #8e0152;
-  --light-pink: #f1b6da;
+  --pink: #c51b7d;
   --description-font-size: 16px;
   --idiom-font-size: 28px;
   --title-font: "Tahoma", sans-serif;
@@ -90,16 +89,20 @@ body {
   color: var(--light-purple);
 }
 
-.lighter-purple {
-  color: var(--lighter-purple);
-}
-
 .brown {
   color: var(--brown);
 }
 
 .light-brown {
   color: var(--light-brown);
+}
+
+.dark-pink {
+  color: var(--dark-prink);
+}
+
+.pink {
+  color: var(--pink);
 }
 
 .bold {
