@@ -5,7 +5,7 @@
   },
   "vconcat": [
     {
-      "width": 1155,
+      "width": 1145,
       "height": 280,
       "layer": [
         {
@@ -341,7 +341,7 @@
                 "color": "#542788"
               },
               "encoding": {
-                "x": { "value": 1150 },
+                "x": { "value": 1140 },
                 "y": { "value": 10 },
                 "text": { "value": ["Worldwide Average GDP Per Capita (USD)"] },
                 "opacity": { "value": 0.1 }
@@ -357,7 +357,7 @@
                 "color": "#b35806"
               },
               "encoding": {
-                "x": { "value": 1150 },
+                "x": { "value": 1140 },
                 "y": { "value": 30 },
                 "text": { "value": ["Malaysia GDP Per Capita (USD)"] },
                 "opacity": { "value": 0.1 }
@@ -368,7 +368,7 @@
       ]
     },
     {
-      "width": 1155,
+      "width": 1145,
       "height": 60,
       "layer": [
         {

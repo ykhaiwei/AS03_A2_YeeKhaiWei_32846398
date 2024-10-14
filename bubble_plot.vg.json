@@ -3,7 +3,7 @@
   "data": {
     "url": "https://raw.githubusercontent.com/ykhaiwei/AS03_A2_YeeKhaiWei_32846398/refs/heads/main/Countries.csv"
   },
-  "width": 450,
+  "width": 455,
   "height": 320,
   "params": [
     {
@@ -33,7 +33,7 @@
     },
     {
       "name": "Year",
-      "value": 2008,
+      "value": 2009,
       "bind": {
         "input": "range",
         "min": 2000,
